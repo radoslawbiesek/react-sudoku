@@ -26,7 +26,6 @@ class Board extends Component {
               value={tile}
               isGenerated={true}
               onChange={(event, index) => this.handleChange(event, index)}
-              data-id={this.ind}
             />
         ));
         return (
