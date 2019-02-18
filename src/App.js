@@ -60,7 +60,7 @@ class App extends Component {
         <div className="App">
           <h1>Sudoku</h1>
           <Board 
-            values={[...this.state.board]}/>
+            initialBoard={this.state.initialBoard}/>
           <div className="Buttons">
             <button onClick={() => this.setState({initialBoard: '', board: ''})}>New Game</button>
             <button onClick={() => this.solve()}>Solve</button>
