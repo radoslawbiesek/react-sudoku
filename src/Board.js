@@ -13,9 +13,9 @@ class Board extends Component {
     }
 
     handleChange(event, index) {
-        console.log('Index: ' + this.index);
+        console.log('Index: ' + index);
         const board = [...this.state.board];
-        board[this.index] = event.target.value;
+        board[index] = event.target.value;
         this.setState({board});
     }
 
