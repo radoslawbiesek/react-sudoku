@@ -1,0 +1,10 @@
+.Tile {
+    box-sizing: border-box;
+    width: 11.1%;
+    height: 4em;
+    text-align: center;
+}
+
+.Tile--Locked {
+    color: red;
+}
