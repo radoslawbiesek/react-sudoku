@@ -14,11 +14,3 @@
     align-items: center;
     flex-wrap: wrap;
 }
-
-.FormButtons {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-}

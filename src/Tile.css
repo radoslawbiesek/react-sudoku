@@ -1,10 +1,13 @@
 .Tile {
     box-sizing: border-box;
     width: 11.1%;
-    height: 4em;
+    height: 2em;
     text-align: center;
+    font-size: 36px;
+    padding: 0;
+    font-weight: bold;
 }
 
 .Tile--Locked {
-    color: red;
+    color: darkgrey;
 }
