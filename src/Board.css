@@ -1,8 +1,13 @@
 .Board {
+    min-width: 360px;
+    /* max-width: 100vmin; */
+}
+
+.Grid {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .Buttons {
@@ -16,4 +21,7 @@
     text-align: center;
     color: green;
     font-size: 36px;
+    position: absolute;
+    top: 0;
+    left: 0;
 }

@@ -2,24 +2,20 @@ import React from 'react';
 import './Tile.css';
 
 const Tile = props => {
-    if (props.isGenerated) {
-        return (
+    return (
+        <div className={'Tile'}>
             <input
-                value={props.value}
-                className={'Tile Tile--Locked'}
-                readOnly
-            />
-        );
-    } else {
-        return (
-            <input
+                className={!props.isGenerated ? 'Tile__Input' : 'Tile__Input Tile__Input--Locked'}
+                readOnly={props.isGenerated}
                 value={props.value !== '.' ? props.value : ''}
-                className={props.isGenerated ? 'Tile Tile--Locked' : 'Tile'}
                 type="number"
+                min="1"
+                max="9"
                 onChange={props.onChange}
-            />            
-        )
-    }
+
+            />
+        </div>           
+    )
 };
 
 export default Tile;

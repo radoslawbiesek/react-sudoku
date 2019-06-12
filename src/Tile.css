@@ -1,13 +1,58 @@
 .Tile {
+    flex-basis: calc(100% / 9);
+    border: 1px solid black;
     box-sizing: border-box;
-    width: 11.1%;
-    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Tile::after {
+    content: "";
+    padding-bottom: 100%;
+    display: block;
+}
+
+.Tile:nth-child(3n):not(:nth-child(9n)){
+    border-right: 3px solid #000;
+  }
+  
+.Tile:nth-child(n+19):nth-child(-n+27),  
+.Tile:nth-child(n+46):nth-child(-n+54) {
+    border-bottom: 3px solid #000;
+}
+
+.Tile__Input {
     text-align: center;
-    font-size: 36px;
     padding: 0;
+    margin: 0;
+    border: none;
+    height: 80%;
+    width: 80%;
+    font-size: 7.5vmin;
     font-weight: bold;
 }
 
-.Tile--Locked {
-    color: darkgrey;
+.Tile__Input:focus {
+    outline: none;
+}
+
+.Tile__Input--Locked {
+    color: dimgrey;
+}
+
+/* .Tile--Wrong {
+    background-color: red;
+} */
+
+
+/* Deleting arrows in HTML5 input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
 }

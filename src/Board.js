@@ -6,14 +6,15 @@ import sudoku from 'sudoku-umd';
 class Board extends Component {
     constructor(props) {
         super(props);
-        const initialBoard = sudoku.generate(this.props.gameLvl);
+        const INITIAL_BOARD = sudoku.generate(this.props.gameLvl);
         this.state = {
-            initialBoard: initialBoard,
-            board: [...initialBoard],
+            initialBoard: INITIAL_BOARD,
+            board: [...INITIAL_BOARD],
+            solvedBoard: sudoku.solve(INITIAL_BOARD),
             isBoardSolved: false,
         }
     }
-
+    
     handleChange(index, event) {
         const board = this.state.board;
         board[index] = event.target.value;
@@ -29,14 +30,12 @@ class Board extends Component {
     }
     
     solveBoard() {
-        const board = [...sudoku.solve(this.state.initialBoard)];
-        this.setState({
-            board
-        });
+        const board = [...this.state.solvedBoard];
+        this.setState( {board} );
     }
 
     checkBoard() {
-        if (this.state.board.join('') === sudoku.solve(this.state.initialBoard)) {
+        if (this.state.board.join('') === this.state.solvedBoard) {
             this.setState({
                 isBoardSolved: true,
             })
@@ -58,8 +57,8 @@ class Board extends Component {
         const alert = this.state.isBoardSolved ? 'You win!' : '';
         
         return (
-            <div>
-                <div className="Board">
+            <div className="Board">
+                <div className="Grid">
                     {tiles}
                 </div>
                 <div className="Buttons">
