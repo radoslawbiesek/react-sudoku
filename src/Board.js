@@ -12,6 +12,7 @@ class Board extends Component {
             board: [...INITIAL_BOARD],
             solvedBoard: sudoku.solve(INITIAL_BOARD),
             isBoardSolved: false,
+            checkMode: false,
         }
     }
     
@@ -25,7 +26,8 @@ class Board extends Component {
         const board = [...this.state.initialBoard];
         this.setState({ 
             board,
-            isBoardSolved: false
+            isBoardSolved: false,
+            checkMode: false,
         });
     }
     
@@ -35,6 +37,8 @@ class Board extends Component {
     }
 
     checkBoard() {
+        this.setState({checkMode: true});
+
         if (this.state.board.join('') === this.state.solvedBoard) {
             this.setState({
                 isBoardSolved: true,
@@ -44,12 +48,19 @@ class Board extends Component {
 
     render() {
         const tiles = this.state.board.map((tile, index) => {
-            const isGenerated = !isNaN([...this.state.initialBoard][index]);
+            
+            let status;
+            if (this.state.initialBoard[index] === this.state.solvedBoard[index]) {
+                status = 'generated';
+            } else if (this.state.checkMode === true && this.state.board[index] !== this.state.solvedBoard[index]) {
+                status = 'wrong';
+            }
+
             return (
                 <Tile
                 key={index}
                 value={tile}
-                isGenerated={isGenerated}
+                status={status}
                 onChange={this.handleChange.bind(this, index)}
                 />
             )

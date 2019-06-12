@@ -20,8 +20,11 @@
 .Alert {
     text-align: center;
     color: green;
-    font-size: 36px;
+    font-size: 12vmin;
+    line-height: 15vmin;
+    background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50vh;
+    left: 50vw;
+    transform: translate3d(-50%, -50%, 0);
 }
