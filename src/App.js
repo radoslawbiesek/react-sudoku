@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Board from './Board';
+import './Button.css';
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class App extends Component {
   render() {
       return (
         <div className="App">
-          <h1>Sudoku</h1>
+
           {this.state.gameLvl === '' ? this.renderForm() : this.renderBoard()}
         </div>
       );
@@ -28,10 +29,11 @@ class App extends Component {
   renderForm() {
     return (
       <div className="FormButtons">
+        <h1>Sudoku</h1>
         <p>New game - choose difficulty:</p>
-        <button onClick={() => this.setState({gameLvl: "easy"})}>Easy</button>
-        <button onClick={() => this.setState({gameLvl: "medium"})}>Medium</button>
-        <button onClick={() => this.setState({gameLvl: "hard"})}>Hard</button>
+        <button className='Button' onClick={() => this.setState({gameLvl: "easy"})}>Easy</button>
+        <button className='Button' onClick={() => this.setState({gameLvl: "medium"})}>Medium</button>
+        <button className='Button' onClick={() => this.setState({gameLvl: "hard"})}>Hard</button>
       </div>
     );
   }

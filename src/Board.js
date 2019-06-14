@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Board.css';
 import Tile from './Tile';
 import sudoku from 'sudoku-umd';
+import './Button.css';
 
 class Board extends Component {
     constructor(props) {
@@ -37,7 +38,7 @@ class Board extends Component {
     }
 
     checkBoard() {
-        this.setState({checkMode: true});
+        this.setState({checkMode: !this.state.checkMode});
 
         if (this.state.board.join('') === this.state.solvedBoard) {
             this.setState({
@@ -73,10 +74,10 @@ class Board extends Component {
                     {tiles}
                 </div>
                 <div className="Buttons">
-                    <button onClick={this.props.newGame}>New Game</button>
-                    <button onClick={() => this.solveBoard()}>Solve</button>
-                    <button onClick={() => this.restartBoard()}>Restart</button>
-                    <button onClick={() => this.checkBoard()}>Check</button>
+                    <button className='Button' onClick={this.props.newGame}>New Game</button>
+                    <button className='Button' onClick={() => this.solveBoard()}>Solve</button>
+                    <button className='Button' onClick={() => this.restartBoard()}>Restart</button>
+                    <button className={this.state.checkMode ? 'Button Button--Checked' : 'Button'} onClick={() => this.checkBoard()}>Check</button>
                 </div>
                 <p className="Alert">{alert}</p>
             </div>

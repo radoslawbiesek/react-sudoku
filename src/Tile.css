@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Caveat&display=swap');
+
 .Tile {
     flex-basis: calc(100% / 9);
     border: 1px solid black;
@@ -27,11 +29,14 @@
     padding: 0;
     margin: 0;
     border: none;
-    height: 80%;
-    width: 80%;
-    font-size: 7.5vmin;
+    height: 70%;
+    width: 70%;
+    font-size: 5vmin;
+    line-height: 6vmin;
     font-weight: bold;
     background-color: transparent;
+    font-family: 'Caveat', cursive;
+    color: #111;
 }
 
 .Tile__Input:focus {
@@ -39,11 +44,16 @@
 }
 
 .Tile__Input--Locked {
-    color: dimgrey;
+    color: #333;
+    font-family: inherit;
+    background-color:  #f2f2f2;
+    width: 100%;
+    height: 100%;
+
 }
 
 .Tile--Wrong {
-    background-color: red;
+    background-color: #ff0000;
 }
 
 
