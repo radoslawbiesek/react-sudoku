@@ -16,6 +16,11 @@
   margin: 1vmin;
 }
 
+.App h2 {
+  font-size: 30px;
+  margin: 1vmin;
+}
+
 .ButtonGroup {
   display: flex;
   justify-content: space-between;

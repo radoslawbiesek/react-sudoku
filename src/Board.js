@@ -23,13 +23,31 @@ class Board extends Component {
         this.setState({board});
     }
 
-    resetBoard() {
-        const board = [...this.state.initialBoard];
-        this.setState({ 
-            board,
-            isBoardSolved: false,
-            checkMode: false,
+    checkBoard() {
+        if (this.state.board.join('') === this.state.solvedBoard) {
+            this.setState( {isBoardSolved: true} )
+        }
+        this.setState({checkMode: !this.state.checkMode});
+    }
+
+    hintBoard() {
+        let currentlyCorrectBoard = '';
+
+        [...this.state.board].forEach((element, index) => {
+            if (element === this.state.solvedBoard[index]) {
+                currentlyCorrectBoard += element;
+            } else {
+                currentlyCorrectBoard += '.';
+            }
+            console.log(currentlyCorrectBoard);
+            console.log(currentlyCorrectBoard.length);
         });
+
+        let board = [];
+        sudoku.get_candidates(currentlyCorrectBoard).forEach(row => {
+            row.forEach(tile => board.push(tile))
+        });
+        this.setState( {board} );
     }
     
     solveBoard() {
@@ -37,13 +55,13 @@ class Board extends Component {
         this.setState( {board} );
     }
 
-    checkBoard() {
-        if (this.state.board.join('') === this.state.solvedBoard) {
-            this.setState({
-                isBoardSolved: true,
-            })
-        }
-        this.setState({checkMode: !this.state.checkMode});
+    resetBoard() {
+        const board = [...this.state.initialBoard];
+        this.setState({ 
+            board,
+            isBoardSolved: false,
+            checkMode: false,
+        });
     }
 
     render() {
@@ -73,10 +91,11 @@ class Board extends Component {
                 </div>
                 <div className="Buttons">
                     <button className={this.state.checkMode ? 'Button Button--Checked' : 'Button'} onClick={() => this.checkBoard()}>Check</button>
+                    <button className='Button' onClick={() => this.hintBoard()}>Hint</button>
                     <button className='Button' onClick={() => this.solveBoard()}>Solve</button>
                     <button className='Button' onClick={() => this.resetBoard()}>Reset</button>
                     <button className='Button' disabled>Save</button>
-                    <button className='Button' onClick={this.props.showMenu}>Menu</button>
+                    <button className='Button' onClick={this.props.showMenu}>&crarr; Menu</button>
                 </div>
                 <p className="Alert">{alert}</p>
             </div>

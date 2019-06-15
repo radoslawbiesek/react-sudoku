@@ -12,6 +12,8 @@ class App extends Component {
   }
 
   setStatus(status) {
+    console.log(status);
+
     this.setState({gameStatus: status});
   }
 
@@ -68,16 +70,16 @@ class App extends Component {
         <h2>New game:</h2>
         <div className='ButtonGroup'>
           {buttons}
-          <button className='Button' onClick={() => this.setStatus('menu')}>Menu</button>
+          <button className='Button' onClick={() => this.setStatus('menu')}>&crarr; Menu</button>
         </div>
       </div>
     );
   }
 
-  renderBoard() {
+  renderBoard(lvl) {
     return (
       <Board
-        gameStatus={this.state.gameStatus}
+        gameLvl={lvl}
         showMenu={this.showMenu.bind(this)}
       />
     );
