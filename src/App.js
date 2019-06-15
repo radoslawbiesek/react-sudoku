@@ -7,36 +7,68 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameLvl: '',
+      gameStatus: 'menu',
     }
   }
 
-  newGame() {
-    this.setState({
-      gameLvl: '',
-    })
+  setStatus(status) {
+    this.setState({gameStatus: status});
+  }
+
+  showMenu() {
+    this.setStatus('menu');
   }
 
   render() {
-      return (
-        <div className="App">
-          {this.state.gameLvl === '' ? this.renderForm() : this.renderBoard()}
-        </div>
-      );
+      let toRender;
+      switch (this.state.gameStatus) {
+
+        case 'easy':
+        case 'medium':
+        case 'hard':
+        case 'very-hard':
+        case 'insane':
+        case 'inhuman':
+          toRender = this.renderBoard(this.state.gameStatus);
+          break;
+
+        case 'new':
+          toRender = this.renderForm();
+          break;
+
+        default:
+          toRender = this.renderMenu();
+      }
+
+    return (
+      <div className="App">
+        {toRender}
+      </div>
+    );
+  }
+
+  renderMenu() {
+    return (
+      <div>
+        <h1>Sudoku</h1>  
+        <button className='Button' onClick={() => this.setStatus('new')}>New Game</button>
+        <button className='Button' disabled>Load Game</button>
+      </div>
+    )
   }
 
   renderForm() {
+    const LEVELS = ['easy', 'medium', 'hard', 'very-hard', 'insane', 'inhuman'];
+    const buttons = LEVELS.map((level, index) => {
+      return (<button className='Button' key={index} onClick={() => this.setStatus(level)}>{level.charAt(0).toLocaleUpperCase() + level.slice(1)}</button>)
+    })
+
     return (
-      <div className="FormButtons">
-        <h1>Sudoku</h1>
+      <div>
         <h2>New game:</h2>
         <div className='ButtonGroup'>
-          <button className='Button' onClick={() => this.setState({gameLvl: "easy"})}>Easy</button>
-          <button className='Button' onClick={() => this.setState({gameLvl: "medium"})}>Medium</button>
-          <button className='Button' onClick={() => this.setState({gameLvl: "hard"})}>Hard</button>
-          <button className='Button' onClick={() => this.setState({gameLvl: "very-hard"})}>Very-Hard</button>
-          <button className='Button' onClick={() => this.setState({gameLvl: "insane"})}>Insane</button>
-          <button className='Button' onClick={() => this.setState({gameLvl: "inhuman"})}>Inhuman</button>
+          {buttons}
+          <button className='Button' onClick={() => this.setStatus('menu')}>Menu</button>
         </div>
       </div>
     );
@@ -45,8 +77,8 @@ class App extends Component {
   renderBoard() {
     return (
       <Board
-        gameLvl={this.state.gameLvl}
-        newGame={this.newGame.bind(this)}
+        gameStatus={this.state.gameStatus}
+        showMenu={this.showMenu.bind(this)}
       />
     );
   }

@@ -1,6 +1,5 @@
 .Board {
     min-width: 360px;
-    /* max-width: 100vmin; */
 }
 
 .Grid {
@@ -15,16 +14,4 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-}
-
-.Alert {
-    text-align: center;
-    color: green;
-    font-size: 12vmin;
-    line-height: 15vmin;
-    background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
-    top: 50vh;
-    left: 50vw;
-    transform: translate3d(-50%, -50%, 0);
 }

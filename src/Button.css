@@ -2,8 +2,8 @@
 	display: inline-block;
 	box-sizing: border-box;
 	margin: 5px;
-	padding: 10px 20px;
-	min-width: 160px;
+	padding: 10px 10px;
+	min-width: 140px;
 	font-size: 16px;
 	font-weight: bold;
 	cursor: pointer;

@@ -23,7 +23,7 @@ class Board extends Component {
         this.setState({board});
     }
 
-    restartBoard() {
+    resetBoard() {
         const board = [...this.state.initialBoard];
         this.setState({ 
             board,
@@ -65,7 +65,6 @@ class Board extends Component {
                 />
             )
         });
-        const alert = this.state.isBoardSolved ? 'You win!' : '';
         
         return (
             <div className="Board">
@@ -73,10 +72,11 @@ class Board extends Component {
                     {tiles}
                 </div>
                 <div className="Buttons">
-                    <button className='Button' onClick={this.props.newGame}>New Game</button>
-                    <button className='Button' onClick={() => this.solveBoard()}>Solve</button>
-                    <button className='Button' onClick={() => this.restartBoard()}>Restart</button>
                     <button className={this.state.checkMode ? 'Button Button--Checked' : 'Button'} onClick={() => this.checkBoard()}>Check</button>
+                    <button className='Button' onClick={() => this.solveBoard()}>Solve</button>
+                    <button className='Button' onClick={() => this.resetBoard()}>Reset</button>
+                    <button className='Button' disabled>Save</button>
+                    <button className='Button' onClick={this.props.showMenu}>Menu</button>
                 </div>
                 <p className="Alert">{alert}</p>
             </div>
