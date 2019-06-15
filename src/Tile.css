@@ -43,17 +43,18 @@
     outline: none;
 }
 
-.Tile__Input--Locked {
+.Tile--Locked .Tile__Input {
     color: #333;
     font-family: inherit;
     background-color:  #f2f2f2;
     width: 100%;
     height: 100%;
-
 }
-
+.Tile--Correct {
+    background-color: #64dd17;
+}
 .Tile--Wrong {
-    background-color: #ff0000;
+    background-color: #dd2c00;
 }
 
 

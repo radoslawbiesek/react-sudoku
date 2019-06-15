@@ -12,7 +12,6 @@ class Board extends Component {
             initialBoard: INITIAL_BOARD,
             board: [...INITIAL_BOARD],
             solvedBoard: sudoku.solve(INITIAL_BOARD),
-            isBoardSolved: false,
             checkMode: false,
         }
     }
@@ -24,9 +23,6 @@ class Board extends Component {
     }
 
     checkBoard() {
-        if (this.state.board.join('') === this.state.solvedBoard) {
-            this.setState( {isBoardSolved: true} )
-        }
         this.setState({checkMode: !this.state.checkMode});
     }
 
@@ -39,8 +35,6 @@ class Board extends Component {
             } else {
                 currentlyCorrectBoard += '.';
             }
-            console.log(currentlyCorrectBoard);
-            console.log(currentlyCorrectBoard.length);
         });
 
         let board = [];
@@ -52,14 +46,16 @@ class Board extends Component {
     
     solveBoard() {
         const board = [...this.state.solvedBoard];
-        this.setState( {board} );
+        this.setState({
+            board, 
+            checkMode: true
+        });
     }
 
     resetBoard() {
         const board = [...this.state.initialBoard];
         this.setState({ 
             board,
-            isBoardSolved: false,
             checkMode: false,
         });
     }
@@ -69,11 +65,17 @@ class Board extends Component {
             
             let status;
             if (this.state.initialBoard[index] === this.state.solvedBoard[index]) {
-                status = 'generated';
-            } else if (this.state.checkMode === true && this.state.board[index] !== this.state.solvedBoard[index]) {
-                status = 'wrong';
+                status = 'Locked';
+            } else if (this.state.checkMode) {
+                switch (tile) {
+                    case this.state.solvedBoard[index]:
+                        status = 'Correct'
+                        break;
+                    default:
+                        status = 'Wrong';
+                }
             }
-
+            
             return (
                 <Tile
                 key={index}
@@ -94,10 +96,9 @@ class Board extends Component {
                     <button className='Button' onClick={() => this.hintBoard()}>Hint</button>
                     <button className='Button' onClick={() => this.solveBoard()}>Solve</button>
                     <button className='Button' onClick={() => this.resetBoard()}>Reset</button>
-                    <button className='Button' disabled>Save</button>
+                    <button className='Button Button--Disabled' disabled>Save</button>
                     <button className='Button' onClick={this.props.showMenu}>&crarr; Menu</button>
                 </div>
-                <p className="Alert">{alert}</p>
             </div>
         );
     }

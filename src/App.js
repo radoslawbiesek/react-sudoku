@@ -12,8 +12,6 @@ class App extends Component {
   }
 
   setStatus(status) {
-    console.log(status);
-
     this.setState({gameStatus: status});
   }
 
@@ -54,7 +52,7 @@ class App extends Component {
       <div>
         <h1>Sudoku</h1>  
         <button className='Button' onClick={() => this.setStatus('new')}>New Game</button>
-        <button className='Button' disabled>Load Game</button>
+        <button className='Button Button--Disabled' disabled>Load Game</button>
       </div>
     )
   }

@@ -3,10 +3,10 @@ import './Tile.css';
 
 const Tile = props => {
     return (
-        <div className={props.status !== 'wrong' ? 'Tile' : 'Tile Tile--Wrong'}>
+        <div className={props.status ? 'Tile Tile--' + props.status : 'Tile'}>
             <input
-                className={props.status === 'generated' ? 'Tile__Input Tile__Input--Locked' : 'Tile__Input'}
-                readOnly={props.status === 'generated'}
+                className='Tile__Input'
+                disabled={props.status === 'Locked'}
                 value={props.value !== '.' ? props.value : ''}
                 type="number"
                 min={1}
