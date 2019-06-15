@@ -20,7 +20,6 @@ class App extends Component {
   render() {
       return (
         <div className="App">
-
           {this.state.gameLvl === '' ? this.renderForm() : this.renderBoard()}
         </div>
       );
@@ -30,10 +29,15 @@ class App extends Component {
     return (
       <div className="FormButtons">
         <h1>Sudoku</h1>
-        <p>New game - choose difficulty:</p>
-        <button className='Button' onClick={() => this.setState({gameLvl: "easy"})}>Easy</button>
-        <button className='Button' onClick={() => this.setState({gameLvl: "medium"})}>Medium</button>
-        <button className='Button' onClick={() => this.setState({gameLvl: "hard"})}>Hard</button>
+        <h2>New game:</h2>
+        <div className='ButtonGroup'>
+          <button className='Button' onClick={() => this.setState({gameLvl: "easy"})}>Easy</button>
+          <button className='Button' onClick={() => this.setState({gameLvl: "medium"})}>Medium</button>
+          <button className='Button' onClick={() => this.setState({gameLvl: "hard"})}>Hard</button>
+          <button className='Button' onClick={() => this.setState({gameLvl: "very-hard"})}>Very-Hard</button>
+          <button className='Button' onClick={() => this.setState({gameLvl: "insane"})}>Insane</button>
+          <button className='Button' onClick={() => this.setState({gameLvl: "inhuman"})}>Inhuman</button>
+        </div>
       </div>
     );
   }

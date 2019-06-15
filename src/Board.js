@@ -38,13 +38,12 @@ class Board extends Component {
     }
 
     checkBoard() {
-        this.setState({checkMode: !this.state.checkMode});
-
         if (this.state.board.join('') === this.state.solvedBoard) {
             this.setState({
                 isBoardSolved: true,
             })
         }
+        this.setState({checkMode: !this.state.checkMode});
     }
 
     render() {
