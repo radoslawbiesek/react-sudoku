@@ -1,13 +1,13 @@
 {
-  "main.css": "/sudoku/static/css/main.3245323d.chunk.css",
-  "main.js": "/sudoku/static/js/main.7ad7c361.chunk.js",
-  "main.js.map": "/sudoku/static/js/main.7ad7c361.chunk.js.map",
+  "main.css": "/sudoku/static/css/main.add9541e.chunk.css",
+  "main.js": "/sudoku/static/js/main.1c6defae.chunk.js",
+  "main.js.map": "/sudoku/static/js/main.1c6defae.chunk.js.map",
   "runtime~main.js": "/sudoku/static/js/runtime~main.8fc694cc.js",
   "runtime~main.js.map": "/sudoku/static/js/runtime~main.8fc694cc.js.map",
-  "static/js/2.daf3af30.chunk.js": "/sudoku/static/js/2.daf3af30.chunk.js",
-  "static/js/2.daf3af30.chunk.js.map": "/sudoku/static/js/2.daf3af30.chunk.js.map",
+  "static/js/2.9daf8d8e.chunk.js": "/sudoku/static/js/2.9daf8d8e.chunk.js",
+  "static/js/2.9daf8d8e.chunk.js.map": "/sudoku/static/js/2.9daf8d8e.chunk.js.map",
   "index.html": "/sudoku/index.html",
-  "precache-manifest.ce7492ea13660d3e532a1b7f9bedbb5b.js": "/sudoku/precache-manifest.ce7492ea13660d3e532a1b7f9bedbb5b.js",
+  "precache-manifest.8c10e70f2d945f6c964c58ed2f946a60.js": "/sudoku/precache-manifest.8c10e70f2d945f6c964c58ed2f946a60.js",
   "service-worker.js": "/sudoku/service-worker.js",
-  "static/css/main.3245323d.chunk.css.map": "/sudoku/static/css/main.3245323d.chunk.css.map"
+  "static/css/main.add9541e.chunk.css.map": "/sudoku/static/css/main.add9541e.chunk.css.map"
 }
