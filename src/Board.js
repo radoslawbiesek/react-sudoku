@@ -1,18 +1,23 @@
 import React, {Component} from 'react';
-import './Board.css';
-import Tile from './Tile';
 import sudoku from 'sudoku-umd';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+
+import Tile from './Tile';
+import { cipher } from './helpers.js';
+
+import './Board.css';
 import './Button.css';
+
 
 class Board extends Component {
     constructor(props) {
         super(props);
-        const INITIAL_BOARD = sudoku.generate(this.props.gameLvl);
         this.state = {
-            initialBoard: INITIAL_BOARD,
-            board: [...INITIAL_BOARD],
-            solvedBoard: sudoku.solve(INITIAL_BOARD),
+            initialBoard: this.props.initialBoard,
+            board: this.props.board,
+            solvedBoard: sudoku.solve(this.props.initialBoard),
             checkMode: false,
+            saveAlert: false,
         }
     }
     
@@ -60,6 +65,16 @@ class Board extends Component {
         });
     }
 
+    showAlert() {
+        this.setState({ saveAlert : true });
+        window.setTimeout(
+            () => this.setState({ saveAlert : false }),
+            3000
+        );
+    }
+
+
+
     render() {
         const tiles = this.state.board.map((tile, index) => {
             
@@ -96,9 +111,15 @@ class Board extends Component {
                     <button className='Button' onClick={() => this.hintBoard()}>Hint</button>
                     <button className='Button' onClick={() => this.solveBoard()}>Solve</button>
                     <button className='Button' onClick={() => this.resetBoard()}>Reset</button>
-                    <button className='Button Button--Disabled' disabled>Save</button>
+                    <CopyToClipboard 
+                        text={cipher(`${this.state.board.join('|')}/${this.state.initialBoard}`)}
+                        onCopy={() => this.showAlert()}
+                    >
+                        <button className='Button'>Save</button>
+                    </CopyToClipboard>
                     <button className='Button' onClick={this.props.showMenu}>&crarr; Menu</button>
                 </div>
+                {this.state.saveAlert ? <p className='save-alert'>Copied to clipboard!</p> : <p className='save-alert save-alert__hidden'>_</p>}
             </div>
         );
     }

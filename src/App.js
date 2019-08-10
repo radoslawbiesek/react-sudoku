@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+
+import LoadGame from './LoadGame';
+import NewGame from './NewGame';
+
 import './App.css';
-import Board from './Board';
 import './Button.css';
 
 class App extends Component {
@@ -12,7 +15,7 @@ class App extends Component {
   }
 
   setStatus(status) {
-    this.setState({gameStatus: status});
+    this.setState({ gameStatus: status });
   }
 
   showMenu() {
@@ -21,21 +24,14 @@ class App extends Component {
 
   render() {
       let toRender;
+
       switch (this.state.gameStatus) {
-
-        case 'easy':
-        case 'medium':
-        case 'hard':
-        case 'very-hard':
-        case 'insane':
-        case 'inhuman':
-          toRender = this.renderBoard(this.state.gameStatus);
+        case 'load':
+          toRender = this.renderLoadGame();
           break;
-
         case 'new':
-          toRender = this.renderForm();
+          toRender = this.renderNewGame();
           break;
-
         default:
           toRender = this.renderMenu();
       }
@@ -52,35 +48,25 @@ class App extends Component {
       <div>
         <h1>Sudoku</h1>  
         <button className='Button' onClick={() => this.setStatus('new')}>New Game</button>
-        <button className='Button Button--Disabled' disabled>Load Game</button>
+        <button className='Button' onClick={() => this.setStatus('load')}>Load Game</button>
       </div>
     )
   }
 
-  renderForm() {
-    const LEVELS = ['easy', 'medium', 'hard', 'very-hard', 'insane', 'inhuman'];
-    const buttons = LEVELS.map((level, index) => {
-      return (<button className='Button' key={index} onClick={() => this.setStatus(level)}>{level.charAt(0).toLocaleUpperCase() + level.slice(1)}</button>)
-    })
-
+  renderNewGame() {
     return (
-      <div>
-        <h2>New game:</h2>
-        <div className='ButtonGroup'>
-          {buttons}
-          <button className='Button' onClick={() => this.setStatus('menu')}>&crarr; Menu</button>
-        </div>
-      </div>
-    );
-  }
-
-  renderBoard(lvl) {
-    return (
-      <Board
-        gameLvl={lvl}
+      <NewGame
         showMenu={this.showMenu.bind(this)}
       />
     );
+  }
+
+  renderLoadGame() {
+    return (
+      <LoadGame
+        showMenu={this.showMenu.bind(this)}
+      />   
+    )
   }
 }
 

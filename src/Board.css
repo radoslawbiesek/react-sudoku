@@ -15,3 +15,13 @@
     align-items: center;
     margin-top: 20px;
 }
+
+.save-alert {
+    font-weight: bold;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.save-alert__hidden {
+    color: transparent;
+}

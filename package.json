@@ -2,13 +2,18 @@
   "name": "sudoku",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://radoslawbiesek.github.io/sudoku",
   "dependencies": {
-    "react": "^16.8.2",
+    "gh-pages": "^2.0.1",
+    "react": "^16.9.0",
+    "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.8.2",
     "react-scripts": "2.1.5",
     "sudoku-umd": "^1.0.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

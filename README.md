@@ -7,10 +7,8 @@ You can:
 * play a game with six levels of difficulty (from 'easy' to 'inhuman')
 * check, reset and solve the current board
 * get candidates for each tile (i.e. '137')
-
-Further development:
-* saving full state of the game to a string
-* loading state of the game
+* save the full state of the game to a string (added 10/8/2019)
+* load state of the game (added 10/8/2019)
 
 ## LIVE
 [Play here!](https://radoslawbiesek.github.io/sudoku/)
